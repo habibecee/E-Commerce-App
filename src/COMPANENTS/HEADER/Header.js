@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import UseApi from "../../HOOKS/UseApi";
 import Logo from "./assets/logo.png";
 import MenuItem from "./companents/MenuItem";
+import Loading from "../LOADING/Loading";
+import "./styles/header.css";
+import { connect } from "react-redux";
 
 const Header = (props) => {
 	const [categories, setCategories] = useState(null);
@@ -22,12 +25,26 @@ const Header = (props) => {
 			.catch((err) => console.log("shop/taxons ERR", err));
 	}, []);
 
+	const onClickLogOut = () => {
+		api
+			.get(" shop/authentication-token ")
+			.then((res) => {
+				console.log("res", res);
+			})
+			.catch((err) => {
+				console.log("err", err);
+			})
+			.finally(() => {
+				localStorage.removeItem("token");
+				window.location.href = "/#";
+				setTimeout(() => {
+					window.location.reload();
+				}, 111);
+			});
+	};
+
 	if (categories === null) {
-		return (
-			<div>
-				<h1>LOADING...</h1>
-			</div>
-		);
+		return <Loading />;
 	}
 
 	categories?.map((item, index) => {
@@ -41,15 +58,17 @@ const Header = (props) => {
 			<div className="top-header">
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-6 col-md-7 col-sm-6 hidden-xs">
+						<div className="col-lg-7 col-md-7 col-sm-6 hidden-xs">
 							<p className="top-text">Flexible Delivery, Fast Delivery.</p>
 						</div>
-						<div className="col-lg-6 col-md-5 col-sm-6 col-xs-12">
+						<div className="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 							<ul>
 								<li>+180-123-4567</li>
 								<li>info@demo.com</li>
 								<li>
-									<a href="#">Help</a>
+									<a href="/" className="headerHelp">
+										Help
+									</a>
 								</li>
 							</ul>
 						</div>
@@ -61,13 +80,13 @@ const Header = (props) => {
 					<div className="row">
 						<div className="col-lg-3 col-md-3 col-sm-3 col-xs-8">
 							<div className="logo">
-								<a href="index.html">
+								<a href="/">
 									<img src={Logo} alt="" />{" "}
 								</a>
 							</div>
 						</div>
 
-						<div className="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+						<div className="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 							<div className="search-bg">
 								<input
 									type="text"
@@ -80,27 +99,52 @@ const Header = (props) => {
 							</div>
 						</div>
 
-						<div className="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+						<div className="col-lg-4 col-md-4 col-sm-3 col-xs-12">
 							<div className="account-section">
-								<ul>
-									<li>
-										<a href="#" className="title hidden-xs">
-											My Account
-										</a>
-									</li>
+								{props.TokenState.token ? (
+									<ul>
+										<li>
+											<a href="/login" className="title hidden-xs">
+												My Account
+											</a>
+										</li>
 
-									<li>
-										<a href="#" className="title hidden-xs">
-											Register
-										</a>
-									</li>
-									<li>
-										<a href="#" className="title">
-											<i className="fa fa-shopping-cart"></i>{" "}
-											<sup className="cart-quantity">1</sup>
-										</a>
-									</li>
-								</ul>
+										<li>
+											<button
+												className="btn title hidden-xs btnLogOut"
+												onClick={onClickLogOut}
+											>
+												Log Out
+											</button>
+										</li>
+										<li>
+											<a href="#" className="title">
+												<i className="fa fa-shopping-cart"></i>{" "}
+												<sup className="cart-quantity">1</sup>
+											</a>
+										</li>
+									</ul>
+								) : (
+									<ul>
+										<li>
+											<a href="/login" className="title hidden-xs">
+												Login
+											</a>
+										</li>
+
+										<li>
+											<a href="/register" className="title hidden-xs">
+												Register
+											</a>
+										</li>
+										<li>
+											<a href="#" className="title">
+												<i className="fa fa-shopping-cart"></i>{" "}
+												<sup className="cart-quantity">1</sup>
+											</a>
+										</li>
+									</ul>
+								)}
 							</div>
 						</div>
 					</div>
@@ -114,7 +158,10 @@ const Header = (props) => {
 									<div id="menu-button">Menu</div>
 									<ul style={{ display: "block" }}>
 										<li className="active">
-											<a href="index.html">Home</a>
+											<a href="/">Home</a>
+										</li>
+										<li>
+											<a href="/categories">CATEGORIES</a>
 										</li>
 										{catArr}
 									</ul>
@@ -128,4 +175,10 @@ const Header = (props) => {
 	);
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+	return {
+		...state,
+	};
+};
+
+export default connect(mapStateToProps)(Header);

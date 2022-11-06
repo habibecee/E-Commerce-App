@@ -7,12 +7,12 @@ export const UseApi = (props) => {
 
 	const token = localStorage.getItem("token");
 
-	axios.defaults.headers.common["accept"] = "application/json";
+	//axios.defaults.headers.common["accept"] = "application/json";
 	axios.defaults.headers.common["Accept-Language"] = "en_US";
-	axios.defaults.headers.common["Content-Type"] = "application/json";
+	// axios.defaults.headers.common["Content-Type"] = "application/json";
 
 	if (token) {
-		console.log("TOKEN MEVCUT", token);
+		// console.log("TOKEN MEVCUT", token);
 
 		axios.defaults.headers.common["Authorization"] = token;
 	}

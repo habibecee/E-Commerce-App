@@ -1,0 +1,8 @@
+.headerHelp {
+	text-decoration: none;
+	color: black;
+}
+
+.headerHelp:hover {
+	color: #fb730f;
+}

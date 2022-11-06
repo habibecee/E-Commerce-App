@@ -31,6 +31,7 @@ const MenuItem = (props) => {
 			<li className="has-sub">
 				<span className="submenu-button"></span>
 				<a href={`/category/${props.code}`}>{props.name}</a>
+				{Temp}
 			</li>
 		</>
 	);
