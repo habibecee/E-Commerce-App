@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import { useActionData, useParams } from "react-router-dom";
 import Loading from "../COMPANENTS/LOADING/Loading";
 import UseApi from "../HOOKS/UseApi";
+import { SET_CART } from "../REDUX/REDUCERS/CART REDUCER/cartReducer";
 
 const ProductDetail = (props) => {
 	const params = useParams();
@@ -20,6 +22,42 @@ const ProductDetail = (props) => {
 				console.log("categorydetailERR", err);
 			});
 	});
+
+	const addItemToCart = (tokenValue) => {
+		const addOrderItemPostData = {
+			productVariant: productDetail.defaultVariant,
+			quantity: 1,
+		};
+
+		api
+			.post(`shop/orders/${tokenValue}/items`, addOrderItemPostData)
+			.then((res) => {})
+			.catch((err) => console.log(err));
+	};
+
+	const onAddToCartClick = () => {
+		console.log(productDetail);
+
+		if (props.cartState === null) {
+			const postData = {
+				localeCode: "en_US",
+			};
+
+			api
+				.post("shop/orders", postData)
+				.then((res) => {
+					console.log(res);
+					props.dispatch({
+						type: SET_CART,
+						payload: res.data,
+					});
+					addItemToCart(res.data.tokenValue);
+				})
+				.catch((err) => console.log(err));
+		} else {
+			addItemToCart(props.cartState.tokenValue);
+		}
+	};
 
 	if (productDetail === null) {
 		return <Loading />;
@@ -85,7 +123,11 @@ const ProductDetail = (props) => {
 													/>
 												</div>
 											</div>
-											<button type="submit" className="btn btn-default">
+											<button
+												type="button"
+												className="btn btn-default"
+												onClick={onAddToCartClick}
+											>
 												<i className="fa fa-shopping-cart"></i>&nbsp;Add to cart
 											</button>
 										</div>
@@ -578,4 +620,10 @@ const ProductDetail = (props) => {
 	);
 };
 
-export default ProductDetail;
+const mapStateToProps = (state) => {
+	return {
+		...state,
+	};
+};
+
+export default connect(mapStateToProps)(ProductDetail);
