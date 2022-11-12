@@ -160,9 +160,6 @@ const Header = (props) => {
 										<li className="active">
 											<a href="/">Home</a>
 										</li>
-										<li>
-											<a href="/categories">CATEGORIES</a>
-										</li>
 										{catArr}
 									</ul>
 								</div>

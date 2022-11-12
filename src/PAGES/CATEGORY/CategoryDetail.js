@@ -22,7 +22,7 @@ const CategoryDetail = (props) => {
 		api
 			.get(`shop/products`, { params: queryData })
 			.then((response) => {
-				console.log("categorydetailRESPONSE", response);
+				// console.log("categorydetailRESPONSE", response);
 				setCategoryDetail(response.data["hydra:member"]);
 			})
 			.catch((err) => {
@@ -264,12 +264,12 @@ const CategoryDetail = (props) => {
 						</div>
 
 						<div className="row">
-							<div className="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+							<div className="col-lg-12 col-md-9 col-sm-8 col-xs-12">
 								<div className="row">{productArr}</div>
 							</div>
 						</div>
 
-						<div className="row">
+						{/* <div className="row">
 							<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div className="st-pagination">
 									<ul className="pagination">
@@ -296,7 +296,7 @@ const CategoryDetail = (props) => {
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>

@@ -38,8 +38,8 @@ const Register = () => {
 		<div className="content">
 			<div className="container">
 				<div className="box sing-form">
-					<div className="row">
-						<div className="col-lg-offset-1 col-lg-5 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 ">
+					<div className="row register-row">
+						<div className="col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 ">
 							<div className="box-body">
 								<div className="row">
 									<div className="col-lg-12 col-md-12 col-sm-6 col-xs-12 mb20">
@@ -117,13 +117,7 @@ const Register = () => {
 													required=""
 												/>
 											</div>
-											<div className="form-group">
-												<label
-													className="control-label sr-only"
-													for="subscribedToNewsletter"
-												>
-													Subscribe?
-												</label>
+											<div className="form-group subscribe-btn">
 												<input
 													onChange={(e) => {
 														setSubscribedToNewsletter(e.target.checked);
@@ -131,8 +125,14 @@ const Register = () => {
 													id="subscribedToNewsletter"
 													name="subscribedToNewsletter"
 													type="checkbox"
-													className="form-control"
+													className="form-control subscribe-input"
 												/>
+												<label
+													className="control-label subscribe-label"
+													for="subscribedToNewsletter"
+												>
+													Subscribe To News Letter?
+												</label>
 											</div>
 										</div>
 										<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">

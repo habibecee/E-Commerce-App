@@ -48,3 +48,53 @@
 .btnLogOut:hover {
 	color: #fb730f;
 }
+
+.register-row {
+	margin-left: -150px;
+}
+
+.login-row {
+	margin-left: -150px;
+	/* width: 1800px; */
+}
+
+.subscribe-btn {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 20px;
+}
+
+.subscribe-input {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+}
+.subscribe-label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.productBox {
+	min-height: 550px;
+	transition: 0.2s ease-in-out;
+}
+
+.productBox:hover {
+	box-shadow: 0 0 20px 5px #282c34d7 !important;
+}
+
+.product-img {
+	min-height: 350px;
+}
+
+.categoryItemImage {
+	width: 200px !important;
+	height: 267px !important;
+	background-color: black !important;
+}

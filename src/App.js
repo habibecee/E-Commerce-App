@@ -5,7 +5,6 @@ import UseApi from "./HOOKS/UseApi";
 import Header from "./COMPANENTS/HEADER/Header";
 import Footer from "./COMPANENTS/FOOTER/Footer";
 import Home from "./PAGES/HOME/Home";
-// import Categories from "./PAGES/CATEGORY/Categories";
 import CategoryDetail from "./PAGES/CATEGORY/CategoryDetail";
 import Login from "./PAGES/LOGIN/Login";
 import Register from "./PAGES/REGISTER/Register";

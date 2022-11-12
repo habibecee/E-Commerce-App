@@ -5,17 +5,18 @@ const CategoryItem = (props) => {
 	return (
 		<>
 			<div className="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb30">
-				<div className="product-block">
+				<div className="product-block productBox">
 					<div className="product-img">
 						<img
+							className="categoryItemImage"
 							src={"https://ecommerce-api.udemig.dev" + props.images[0].path}
 							alt=""
 						/>
 					</div>
 					<div className="product-content">
 						<h5>
-							<a href={props.code} className="product-title">
-								{props.name} <strong>(128GB, Black)</strong>
+							<a href={"/product/" + props.code} className="product-title">
+								{props.name} <strong></strong>
 							</a>
 						</h5>
 						<div className="product-meta">
@@ -28,7 +29,11 @@ const CategoryItem = (props) => {
 							<span className="offer-price">20%off</span>
 						</div>
 						<div className="shopping-btn">
-							<a href="#" className="product-btn btn-like">
+							<a
+								href="#"
+								className="product-btn btn-like"
+								style={{ marginRight: "30px" }}
+							>
 								<i className="fa fa-heart"></i>
 							</a>
 							<a href="#" className="product-btn btn-cart">

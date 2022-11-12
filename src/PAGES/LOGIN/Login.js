@@ -36,9 +36,9 @@ const Login = (props) => {
 	return (
 		<div className="content">
 			<div className="container">
-				<div className="box">
-					<div className="row">
-						<div className="col-lg-offset-1 col-lg-5 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 ">
+				<div className="box sing-form">
+					<div className="row login-row">
+						<div className="col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-5 col-sm-12 col-xs-12">
 							<div className="box-body">
 								<div className="row">
 									<div className="col-lg-12 col-md-12 col-sm-6 col-xs-12 mb20">
@@ -54,7 +54,7 @@ const Login = (props) => {
 											<div className="form-group">
 												<label
 													className="control-label sr-only"
-													htmlFor="email"
+													for="email"
 												></label>
 												<div className="login-input">
 													<input
@@ -64,7 +64,7 @@ const Login = (props) => {
 														type="text"
 														className="form-control"
 														placeholder="Enter your email id"
-														required
+														required=""
 													/>
 													<div className="login-icon">
 														<i className="fa fa-user"></i>
@@ -72,6 +72,7 @@ const Login = (props) => {
 												</div>
 											</div>
 										</div>
+										<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 										<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<div className="form-group">
 												<label className="control-label sr-only"></label>
@@ -82,7 +83,7 @@ const Login = (props) => {
 														type="password"
 														className="form-control"
 														placeholder="******"
-														required
+														required=""
 													/>
 													<div className="login-icon">
 														<i className="fa fa-lock"></i>
@@ -95,16 +96,11 @@ const Login = (props) => {
 										</div>
 										<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20 ">
 											<button
-												className="btn btn-primary btn-block mb10"
 												onClick={onLoginClick}
+												className="btn btn-primary btn-block mb10"
 											>
-												LOG IN
+												Login
 											</button>
-											<div>
-												<p>
-													Have not an Acount? <a href="/register">Register</a>
-												</p>
-											</div>
 										</div>
 									</form>
 
