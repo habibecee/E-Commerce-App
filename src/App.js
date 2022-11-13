@@ -8,6 +8,7 @@ import Home from "./PAGES/HOME/Home";
 import CategoryDetail from "./PAGES/CATEGORY/CategoryDetail";
 import Login from "./PAGES/LOGIN/Login";
 import Register from "./PAGES/REGISTER/Register";
+import Cart from "./PAGES/CART/Cart";
 import { connect } from "react-redux";
 import ProductDetail from "./PAGES/ProductDetails";
 
@@ -29,6 +30,7 @@ const App = (props) => {
 					<Route path="/" element={<Home />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
+					<Route path="/cart" element={<Cart />} />
 					<Route path="/category">
 						<Route path=":categoryCode" element={<CategoryDetail />} />
 					</Route>

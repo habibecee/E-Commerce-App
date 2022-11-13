@@ -21,17 +21,22 @@ const ProductDetail = (props) => {
 			.catch((err) => {
 				console.log("categorydetailERR", err);
 			});
-	});
+	}, []);
 
 	const addItemToCart = (tokenValue) => {
-		const addOrderItemPostData = {
+		const postData = {
 			productVariant: productDetail.defaultVariant,
 			quantity: 1,
 		};
 
 		api
-			.post(`shop/orders/${tokenValue}/items`, addOrderItemPostData)
-			.then((res) => {})
+			.post(`shop/orders/${tokenValue}/items`, postData)
+			.then((res) => {
+				props.dispatch({
+					type: SET_CART,
+					payload: res.data,
+				});
+			})
 			.catch((err) => console.log(err));
 	};
 
