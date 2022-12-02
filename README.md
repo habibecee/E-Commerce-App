@@ -16,6 +16,6 @@
 
 <h3> SITE VIEW </h3> </br>
 
-<p> This project will be updated </p> </br>
+<p> Cart page will be updated </p> </br>
 
-<!-- ![]() </br> -->
+![](./src/ASSETS/screen.gif) </br>
