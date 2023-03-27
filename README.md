@@ -16,6 +16,4 @@
 
 <h3> SITE VIEW </h3> </br>
 
-<p> Cart page will be updated </p> </br>
-
 ![](./src/ASSETS/screen.gif) </br>
